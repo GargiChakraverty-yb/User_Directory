@@ -1,0 +1,47 @@
+book_directory(MVC :- model,view,controller)
+1.assests- has all the js,images and css files.
+       a.css 
+       b.js 
+       c.images
+2.views :- has all the html files (ejs :- dynamic html files).This is the default folder for the view engine of express.
+      a.index.ejs
+      b.partials
+         1.headers.ejs
+         2.footers.ejs
+3.server:- has all the server side code.
+       a.controller :- deal with user requests for resources from the server.Make diff funcs which will send diff resources to the user. 
+       b.model :- work with mongodb data
+       c.database :- for database connection.
+       d.routes :- for creating diff routes 
+       e.services
+4.package.json :- npm init gives this folder
+5.package.lock.json
+6.server.js :- program runs from here.
+7.config.env:- has all the varibles which are not to be shared with other users.Separtes our secret from the source code.
+
+
+
+steps:-
+1. create the basic http server in server.js by importing express,making app ,get func for root ,and listening to port 3000.See if it is working properly.
+2. Now change the PORT on which server is running by using the process.env file instead of localhost and listen to this new port variable instead of 3000.
+3. create .env file and make a PORT variable in it for the server.
+4. But we also need to tell the express server about the path of the .env file so that it can use Port variable.
+5.For this import the dotenv module and before intializing the port varible call the config func. and specify the path of the .env file.
+6.import the morgan module so that requests are printed/logged to the console when we make them.(type of request,path and response time in milliseconds) and use it while passing the 'tiny' token.
+7.import the body parser module and use it by passing an object with property exteneded: true. 
+8.set view engine for ejs and specify the type of view engine we are using -'ejs'(other-html,pug).
+9. in case we were not using the view folder then we would have to import the path module so that we can specify the path of the views folder while setting the view engine.Path module is inbuilt in our node application so we did not npm install it like other dependencies.using path.resolve(__dirname,"relative path to directory")
+10.load all the assets by using relative path to the root directory.
+11.Now create views for the express application. 
+12.create new file inside views folder named 'index.ejs'. ejs stands for embedded javascript templates. 
+13.make the standard html template inside index.ejs by pressing ! and tab. change the title.
+14. make a header->navbar->div->div->anchor tag with root route '/' 
+15.now in server.js render the index.ejs inside get request for root route '/' as response.No need for the .ejs extension while rendering as view engine already knows we are using ejs as our view engine.
+15. now to make the code more clean we use the header and footer . use underscore before header and footer files to indicate that they are partial files.
+16. cut hte header part and put it in header file and same for footer file.
+17.as changes in the ejs files does not restart the server we make  a dummy html file which has all the code of the ejs file and which we can run by using the live server extension.
+18.now we will make the main section of this html file 
+19. main->div->div->a href="new user"->span->icon-code;
+20. to import icons for new user, go to cndjs.com library first link copy the link tag and add it to head section of 
+html file.
+21.go to font awesome and find the code for user and paste it after the new user text in span tag.
